@@ -1,10 +1,11 @@
-import { FaHtml5, FaCss3Alt, FaJava, FaJsSquare, FaReact, FaNodeJs, FaPhp, FaPython, FaDocker, FaGitAlt, FaAws, FaGoogle, FaMicrosoft, FaDatabase, FaBash, FaCuttlefish } from 'react-icons/fa';
-import { SiRedux, SiPrisma, SiDjango, SiMongodb, SiMysql, SiNginx, SiTypescript, SiNextdotjs, SiExpress } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJava, FaJsSquare, FaReact, FaNodeJs, FaPhp, FaPython, FaDocker, FaGitAlt, FaAws, FaGoogle, FaMicrosoft, FaDatabase, FaBash, FaCuttlefish, FaWindows, FaLinux } from 'react-icons/fa';
+import { SiRedux, SiPrisma, SiDjango, SiMongodb, SiMysql, SiNginx, SiTypescript, SiNextdotjs, SiExpress, SiPostgresql } from 'react-icons/si';
 
 const skills = {
-  languages: ["C", "C++", "Java", "HTML", "CSS", "PHP", "JavaScript", "TypeScript", "Python"],
+  languages: ["C", "C++", "Java", "HTML", "CSS", "PHP", "JavaScript", "TypeScript", "Python", "Bash"],
   frameworks: ["React", "Redux", "Next.js", "Node.js", "Express", "Prisma", "Django"],
-  tools: ["Git", "RESTful APIs", "Nginx", "Docker"],
+  databases: ["MongoDB", "MySQL", "Postgres", "SQL"],
+  tools: ["Git", "RESTful APIs", "Nginx", "Docker", "Windows", "Linux"],
   cloudPlatforms: ["Microsoft Azure", "Google Cloud", "AWS"]
 };
 
@@ -18,7 +19,8 @@ const skillIcons = {
   "PHP": <FaPhp />,
   "JavaScript": <FaJsSquare />,
   "TypeScript": <SiTypescript />,
-  "Python" : <FaPython/>,
+  "Python": <FaPython />,
+  "Bash": <FaBash />,
   "React": <FaReact />,
   "Redux": <SiRedux />,
   "Next.js": <SiNextdotjs />,
@@ -28,11 +30,14 @@ const skillIcons = {
   "Django": <SiDjango />,
   "MongoDB": <SiMongodb />,
   "MySQL": <SiMysql />,
-  "Bash": <FaBash />,
+  "Postgres": <SiPostgresql />,
+  "SQL": <FaDatabase />,
   "Git": <FaGitAlt />,
   "RESTful APIs": <FaNodeJs />,
   "Nginx": <SiNginx />,
   "Docker": <FaDocker />,
+  "Windows": <FaWindows />,
+  "Linux": <FaLinux />,
   "Microsoft Azure": <FaMicrosoft />,
   "Google Cloud": <FaGoogle />,
   "AWS": <FaAws />
