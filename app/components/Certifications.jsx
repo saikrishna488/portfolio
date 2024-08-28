@@ -22,7 +22,7 @@ const certifications = [
   {
     title: "Node.js",
     description: "Certification in Node.js, demonstrating proficiency in server-side JavaScript development.",
-    link: "https://www.credly.com/earner/earned/badge/8d8d92d6-ace6-4c1e-b0e4-b997a70fab45",
+    link: "https://www.credly.com/badges/8d8d92d6-ace6-4c1e-b0e4-b997a70fab45/public_url",
     icon: <FaNodeJs className="text-green-400 text-4xl" />
   },
   {
