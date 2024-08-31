@@ -32,6 +32,12 @@ const projects = [
     imgSrc: "wchat.png"
   },
   {
+    title: "Learning Logs: Track and manage your learning topics",
+    description: "A Django app to track, manage, and edit your learning topics and entries.",
+    liveDemo: "https://learning-log-btkri2bn2q-em.a.run.app/",
+    imgSrc: "learning_logs.png"
+  },
+  {
     title: "Dictionary API – RESTful API",
     description: "Designed a RESTful API with Node.js and Express.js providing dictionary services.",
     liveDemo: "https://dictionary-api-chi.vercel.app/dict/internet",
