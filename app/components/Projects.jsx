@@ -66,6 +66,12 @@ const projects = [
     description: "Developed a Python voice assistant for tasks like telling time and Google searches.",
     liveDemo: "https://github.com/saikrishna488/voice-assistant",
     imgSrc: "voice-assistant.png"
+  },
+  {
+    title: "Hackermars",
+    description: "Engage with a diverse talent pool or hire the best minds from participants.",
+    liveDemo: "https://hackermars.vercel.app",
+    imgSrc: "hackermars.png"
   }
 ];
 const ProjectCard = ({ project }) => (
