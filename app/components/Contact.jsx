@@ -9,12 +9,6 @@ const contactDetails = [
     link: "mailto:saikrishnapakkir@gmail.com"
   },
   {
-    icon: <FaPhone className="text-green-500 text-2xl" />,
-    label: "Phone",
-    value: "810-662-9402",
-    link: "tel:8106629402"
-  },
-  {
     icon: <FaGithub className="text-gray-900 text-2xl" />,
     label: "GitHub",
     value: "saikrishna488",
