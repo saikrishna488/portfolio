@@ -44,7 +44,7 @@ const skillsData = [
 
 const TechnicalSkills = () => {
   return (
-    <section id="skills" className="bg-light-gray py-16 ">
+    <section id="skills" className="bg-light-gray py-24 ">
       <div className="container mx-auto px-6 md:px-12 lg:w-4/5">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-12">
           Technical Skills

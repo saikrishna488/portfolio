@@ -23,6 +23,7 @@ const Header = () => {
           <a href="#about" className="text-gray-800 hover:text-blue-600 transition">About</a>
           <a href="#projects" className="text-gray-800 hover:text-blue-600 transition">Projects</a>
           <a href="#achievements" className="text-gray-800 hover:text-blue-600 transition">Achievements</a>
+          <a href="#skills" className="text-gray-800 hover:text-blue-600 transition">Skills</a>
           <a href="#leadership" className="text-gray-800 hover:text-blue-600 transition">Leadership</a> {/* Added Leadership */}
           <a href="#contact" className="text-gray-800 hover:text-blue-600 transition">Contact</a>
         </nav>
@@ -42,6 +43,7 @@ const Header = () => {
             <a href="#about" onClick={toggleMenu} className="text-gray-800 hover:text-blue-600 transition">About</a>
             <a href="#projects" onClick={toggleMenu} className="text-gray-800 hover:text-blue-600 transition">Projects</a>
             <a href="#achievements" onClick={toggleMenu} className="text-gray-800 hover:text-blue-600 transition">Achievements</a>
+            <a href="#skills" onClick={toggleMenu} className="text-gray-800 hover:text-blue-600 transition">Skills</a>
             <a href="#leadership" onClick={toggleMenu} className="text-gray-800 hover:text-blue-600 transition">Leadership</a> {/* Added Leadership */}
             <a href="#contact" onClick={toggleMenu} className="text-gray-800 hover:text-blue-600 transition">Contact</a>
           </div>
