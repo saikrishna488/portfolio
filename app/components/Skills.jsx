@@ -1,78 +1,72 @@
-import { FaHtml5, FaCss3Alt, FaJava, FaJsSquare, FaReact, FaNodeJs, FaPhp, FaPython, FaDocker, FaGitAlt, FaAws, FaGoogle, FaMicrosoft, FaDatabase, FaCuttlefish, FaWindows, FaLinux } from 'react-icons/fa';
-import { SiRedux, SiPrisma, SiDjango, SiMongodb, SiMysql, SiNginx, SiTypescript, SiNextdotjs, SiExpress, SiPostgresql } from 'react-icons/si';
+'use client';
 
-const skills = {
-  languages: ["C", "C++", "Java", "HTML", "CSS", "PHP", "JavaScript", "TypeScript", "Python"],
-  frameworks: ["React", "Redux", "Next.js", "Node.js", "Express", "Prisma", "Django"],
-  databases: ["MongoDB", "MySQL", "Postgres", "SQL"],
-  tools: ["Git", "RESTful APIs", "Nginx", "Docker", "Windows", "Linux"],
-  cloudPlatforms: ["Microsoft Azure", "Google Cloud", "AWS"]
-};
+import React from 'react';
+import { FaReact, FaNode, FaPython, FaDatabase, FaGit } from 'react-icons/fa';
+import { SiJavascript, SiTypescript, SiHtml5, SiCss3, SiDjango, SiPhp, SiC } from 'react-icons/si';
 
-// Map each skill to its corresponding icon
-const skillIcons = {
-  "C": <FaCuttlefish />,
-  "C++": <FaCuttlefish />,
-  "Java": <FaJava />,
-  "HTML": <FaHtml5 />,
-  "CSS": <FaCss3Alt />,
-  "PHP": <FaPhp />,
-  "JavaScript": <FaJsSquare />,
-  "TypeScript": <SiTypescript />,
-  "Python": <FaPython />,
-  "React": <FaReact />,
-  "Redux": <SiRedux />,
-  "Next.js": <SiNextdotjs />,
-  "Node.js": <FaNodeJs />,
-  "Express": <SiExpress />,
-  "Prisma": <SiPrisma />,
-  "Django": <SiDjango />,
-  "MongoDB": <SiMongodb />,
-  "MySQL": <SiMysql />,
-  "Postgres": <SiPostgresql />,
-  "SQL": <FaDatabase />,
-  "Git": <FaGitAlt />,
-  "RESTful APIs": <FaNodeJs />,
-  "Nginx": <SiNginx />,
-  "Docker": <FaDocker />,
-  "Windows": <FaWindows />,
-  "Linux": <FaLinux />,
-  "Microsoft Azure": <FaMicrosoft />,
-  "Google Cloud": <FaGoogle />,
-  "AWS": <FaAws />
-};
+const skillsData = [
+  {
+    category: 'Languages',
+    skills: [
+      { name: 'JavaScript', icon: <SiJavascript /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'C', icon: <SiC /> },
+      { name: 'C++', icon: <SiC /> }, // Use the same icon for C++ (or a different choice if you find one)
+      { name: 'Java', icon: <FaDatabase /> }, // Use a generic icon for Java
+      { name: 'Python', icon: <FaPython /> },
+      { name: 'PHP', icon: <SiPhp /> },
+    ],
+  },
+  {
+    category: 'Frameworks',
+    skills: [
+      { name: 'React', icon: <FaReact /> },
+      { name: 'Node.js', icon: <FaNode /> },
+      { name: 'Django', icon: <SiDjango /> },
+    ],
+  },
+  {
+    category: 'Databases',
+    skills: [
+      { name: 'MongoDB', icon: <FaDatabase /> },
+      { name: 'MySQL', icon: <FaDatabase /> },
+      { name: 'SQL', icon: <FaDatabase /> },
+    ],
+  },
+  {
+    category: 'Tools',
+    skills: [
+      { name: 'Git', icon: <FaGit /> },
+      { name: 'Docker', icon: <FaDatabase /> },
+    ],
+  },
+];
 
-// Enhanced Skill Card component
-const SkillCard = ({ skill, icon }) => (
-  <div className="p-4 rounded-lg shadow-lg flex flex-col items-center justify-center bg-gradient-to-r from-gray-700 to-gray-900 transform hover:scale-105 transition-transform">
-    <div className="text-4xl text-white mb-4">{icon}</div>
-    <span className="text-white font-semibold text-center">{skill}</span>
-  </div>
-);
-
-// Main Skills component
-const Skills = () => (
-  <section id="skills" className="py-16 bg-gray-100">
-    <div className="container mx-auto px-6 text-center">
-      <h3 className="text-4xl font-bold mb-12 text-blue-600 animate__animated animate__fadeIn">Technical Skills</h3>
-      <div className="space-y-12">
-        {Object.entries(skills).map(([category, skillList], index) => (
-          <div key={index} className="mb-12 bg-white p-8 rounded-lg shadow-md">
-            <h4 className="text-2xl font-semibold mb-6 text-blue-600">{category.replace(/([A-Z])/g, ' $1').trim()}</h4>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {skillList.map(skill => (
-                <SkillCard
-                  key={skill}
-                  skill={skill}
-                  icon={skillIcons[skill] || <FaCuttlefish />}
-                />
-              ))}
+const TechnicalSkills = () => {
+  return (
+    <section id="skills" className="bg-light-gray h-screen py-16 md:py-24">
+      <div className="container mx-auto px-6 md:px-12 lg:w-4/5">
+        <h2 className="text-2xl font-bold text-gray-800 text-center mb-12">
+          Technical Skills
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillsData.map((category, index) => (
+            <div key={index} className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">{category.category}</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {category.skills.map((skill, idx) => (
+                  <div key={idx} className="flex items-center bg-gray-100 p-3 rounded-md shadow">
+                    <span className="text-2xl text-green-600 mr-2">{skill.icon}</span>
+                    <span className="text-gray-800">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-export default Skills;
+export default TechnicalSkills;

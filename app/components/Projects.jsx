@@ -1,104 +1,125 @@
-import { FaExternalLinkAlt } from 'react-icons/fa';
+'use client';
+
+import React from 'react';
+
+// Function to generate random light gradients
+const getRandomLightGradient = () => {
+  const colors = [
+    '#FFB6C1', // Light Pink
+    '#FFD700', // Gold
+    '#ADD8E6', // Light Blue
+    '#90EE90', // Light Green
+    '#FFDEAD', // Navajo White
+    '#E6E6FA', // Lavender
+    '#FFFACD', // Lemon Chiffon
+    '#B0E0E6', // Powder Blue
+    '#FAFAD2', // Light Goldenrod
+    '#FFE4E1', // Misty Rose
+  ];
+  
+  const color1 = colors[Math.floor(Math.random() * colors.length)];
+  const color2 = colors[Math.floor(Math.random() * colors.length)];
+
+  return `linear-gradient(135deg, ${color1}, ${color2})`;
+};
 
 const projects = [
   {
     title: "Image Gallery - Pixabay API",
-    description: "Developed a React-based application that leverages the Pixabay API for seamless image searching.",
+    description: "React app for image searching using Pixabay API. Users can explore and find images based on keywords, and enjoy a responsive design for a seamless experience.",
     liveDemo: "https://image-gallery-steel-chi.vercel.app/",
-    imgSrc: "image-gallery.png" 
   },
   {
     title: "Public Party - Trending Shows and Movies",
-    description: "Created a web application that showcases trending shows and movies by utilizing the IMDb API (discontinued).",
+    description: "Web app showcasing trending shows and movies using the IMDb API. Offers real-time updates and user-friendly navigation to discover new content.",
     liveDemo: "https://public-party.vercel.app/",
-    imgSrc: "public-party.png"
   },
   {
-    title: "Voice to Text - Speech-to-Text Conversion",
-    description: "Engineered a speech recognition app using React and the Speech Recognition library.",
+    title: "Voice to Text - Speech-to-Text",
+    description: "Speech recognition app built with React. Converts spoken language into text in real-time, featuring an intuitive user interface.",
     liveDemo: "https://speech-to-text-ecru-tau.vercel.app/",
-    imgSrc: "speech-to-text.png"
   },
   {
-    title: "ApnAInterview Cracker - Job-Ready Tools",
-    description: "Developed a comprehensive platform for creating personal portfolio websites and more.",
+    title: "ApnAInterview Cracker - Job Tools",
+    description: "Platform for creating personal portfolio websites. Includes templates and tools to help users showcase their skills effectively.",
     liveDemo: "https://nextjs-app-btkri2bn2q-em.a.run.app/",
-    imgSrc: "apnainterview.png"
   },
   {
-    title: "wChat – Real-time Chat Application",
-    description: "Built a dynamic real-time chat application using React, Node.js, Express, and Socket.IO.",
+    title: "wChat – Real-time Chat App",
+    description: "Dynamic chat app using React, Node.js, and Socket.IO. Allows users to chat in real-time, with features like group chats and notifications.",
     liveDemo: "https://wchat-frontned-btkri2bn2q-uc.a.run.app/",
-    imgSrc: "wchat.png"
   },
   {
-    title: "Learning Logs: Track and manage your learning topics",
-    description: "A Django app to track, manage, and edit your learning topics and entries.",
+    title: "Learning Logs",
+    description: "Django app to track learning topics. Users can log their learning progress and set goals, providing insights into their education journey.",
     liveDemo: "https://learning-log-btkri2bn2q-em.a.run.app/",
-    imgSrc: "learning_logs.png"
   },
   {
     title: "Dictionary API – RESTful API",
-    description: "Designed a RESTful API with Node.js and Express.js providing dictionary services.",
+    description: "RESTful API for dictionary services using Node.js. Provides definitions, synonyms, and antonyms, supporting various queries.",
     liveDemo: "https://dictionary-api-chi.vercel.app/dict/internet",
-    imgSrc: "api.png"
   },
   {
     title: "JWT Authentication App",
-    description: "Created a secure user authentication system with JWT-based authentication.",
+    description: "Secure user authentication system. Utilizes JSON Web Tokens (JWT) for robust security and user management, ideal for modern applications.",
     liveDemo: "https://mern-jwt-authentication-frontned.vercel.app/",
-    imgSrc: "jwt-auth.png"
   },
   {
     title: "Alien Invasion (2D Game)",
-    description: "Developed a classic 2D arcade-style game using the Pygame library.",
+    description: "Classic 2D arcade-style game with Pygame. Players defend against waves of alien invaders, featuring engaging graphics and sound effects.",
     liveDemo: "https://github.com/saikrishna488/alien_invasion",
-    imgSrc: "alien-invasion.png"
   },
   {
     title: "Project Management App",
-    description: "Built a project management app using React, GraphQL, and MongoDB.",
+    description: "Project management app using React and GraphQL. Helps teams collaborate effectively with task tracking, status updates, and reporting.",
     liveDemo: "https://project-management-jade.vercel.app/",
-    imgSrc: "proj-management.png"
   },
   {
     title: "Python Voice Assistant",
-    description: "Developed a Python voice assistant for tasks like telling time and Google searches.",
+    description: "Voice assistant for various tasks. Supports commands for scheduling, reminders, and information retrieval, showcasing AI capabilities.",
     liveDemo: "https://github.com/saikrishna488/voice-assistant",
-    imgSrc: "voice-assistant.png"
   },
   {
     title: "Hackermars",
-    description: "Engage with a diverse talent pool or hire the best minds from participants.",
+    description: "Connect with diverse talent or hire top minds. A platform for hosting hackathons, bringing together innovators and employers.",
     liveDemo: "https://hackermars.vercel.app",
-    imgSrc: "hackermars.png"
   }
 ];
-const ProjectCard = ({ project }) => (
-  <div className="group relative bg-white p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
-    <img src={project.imgSrc} alt={project.title} className="w-full h-48 object-cover rounded-xl mb-4 opacity-90 group-hover:opacity-100 transition-opacity" />
-    <div className="absolute inset-0 bg-gray-800 bg-opacity-60 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-      <a href={project.liveDemo} className="text-white text-lg font-bold flex items-center gap-2" target="_blank" rel="noopener noreferrer">
-        <span>Live Demo</span> <FaExternalLinkAlt />
-      </a>
-    </div>
-    <h4 className="text-2xl font-semibold text-gray-800 mb-2">{project.title}</h4>
-    <p className="text-gray-600">{project.description}</p>
-  </div>
-);
 
-// Main Projects component
-const Projects = () => (
-  <section id="projects" className="py-20 bg-gray-100">
-    <div className="container mx-auto px-6 text-center">
-      <h3 className="text-4xl font-bold mb-12 text-gray-800 animate__animated animate__fadeIn">Projects</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
-        ))}
+const Projects = () => {
+  return (
+    <section id="projects" className="bg-light-gray py-16 md:py-24">
+      <div className="container mx-auto px-6 md:px-12 lg:w-4/5">
+        <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">
+          My Projects
+        </h2>
+        <div className="flex flex-col gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              style={{ background: getRandomLightGradient() }} // Apply random gradient background
+              className="rounded-lg p-6 shadow-md transition-transform transform hover:scale-105 hover:shadow-xl flex flex-col"
+            >
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">{project.title}</h3>
+              <p className="text-gray-600 mb-4 h-[200px] overflow-hidden text-sm">
+                {project.description}
+              </p>
+              <div className="mt-auto">
+                <a
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 text-gray-800 px-6 py-2 rounded-md shadow hover:bg-gray-300 transition-all duration-300 transform hover:scale-105 font-semibold"
+                >
+                  View Project
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Projects;
