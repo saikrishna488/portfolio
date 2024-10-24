@@ -39,7 +39,7 @@ const AchievementCard = ({ title, description, icon }) => (
 );
 
 const Achievements = () => (
-  <section id="achievements" className="py-20 h-screen bg-gradient-to-r from-blue-50 to-green-50">
+  <section id="achievements" className="py-24 bg-gradient-to-r from-blue-50 to-green-50">
     <div className="container mx-auto px-6 lg:w-4/5"> {/* Set width to 80% on large screens */}
       <h3 className="text-2xl text-center font-bold mb-12 text-black animate__animated animate__fadeIn">Achievements</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
