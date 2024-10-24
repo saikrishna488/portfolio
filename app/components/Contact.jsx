@@ -1,24 +1,24 @@
 import React from 'react';
-import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const contactDetails = [
   {
     icon: <FaEnvelope className="text-blue-500 text-2xl" />,
     label: "Email",
-    value: "saikrishnapakkir@gmail.com",
-    link: "mailto:saikrishnapakkir@gmail.com"
+    link: "mailto:saikrishnapakkir@gmail.com",
+    buttonLabel: "Send Email"
   },
   {
     icon: <FaGithub className="text-gray-900 text-2xl" />,
     label: "GitHub",
-    value: "saikrishna488",
-    link: "https://github.com/saikrishna488"
+    link: "https://github.com/saikrishna488",
+    buttonLabel: "View GitHub"
   },
   {
     icon: <FaLinkedin className="text-blue-700 text-2xl" />,
     label: "LinkedIn",
-    value: "saikrishna488",
-    link: "https://www.linkedin.com/in/saikrishna488"
+    link: "https://www.linkedin.com/in/saikrishna488",
+    buttonLabel: "Connect on LinkedIn"
   }
 ];
 
@@ -37,7 +37,9 @@ const Contact = () => (
               {detail.icon}
             </div>
             <h4 className="text-xl font-semibold text-gray-800 mb-2">{detail.label}</h4>
-            <p className="text-gray-600">{detail.value}</p>
+            <button className="bg-blue-200 text-gray-800 py-2 px-4 rounded-full hover:bg-blue-300">
+              {detail.buttonLabel}
+            </button>
           </a>
         ))}
       </div>

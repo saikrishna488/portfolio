@@ -10,7 +10,7 @@ const leadershipEntries = [
 ];
 
 const Leadership = () => (
-  <section id="leadership" className="py-16 bg-gradient-to-r from-blue-50 to-green-50">
+  <section id="leadership" className="py-16 h-screen flex justify-center items-center bg-gradient-to-r from-blue-50 to-green-50">
     <div className="container mx-auto px-6 lg:w-4/5"> {/* Set width to 80% on large screens */}
       <h3 className="text-2xl font-bold mb-10 text-center text-gray-800">Leadership and Initiatives</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
