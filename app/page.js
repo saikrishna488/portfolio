@@ -18,10 +18,10 @@ const Home = () => (
     <HeroSection />
     <Summary />
     <Projects />
-    <Skills />
-    <Certifications />
     <Achievements />
+    <Skills />
     <Leadership />
+    <Certifications />
     <Education />
     <Contact/>
     <Footer />
