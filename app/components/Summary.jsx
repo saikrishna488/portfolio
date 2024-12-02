@@ -70,7 +70,7 @@ const About = () => {
                   Let's Connect
                 </a>
                 <button 
-                  onClick={() => router.push('/resume')}
+                  onClick={() => router.push('/resume24.pdf')}
                   className="inline-flex items-center px-6 py-3 rounded-lg bg-gray-50 text-gray-700 
                     font-medium border border-gray-200 hover:bg-gray-100 hover:border-gray-300 
                     transition-all duration-200"

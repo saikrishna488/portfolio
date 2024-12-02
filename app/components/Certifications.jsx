@@ -81,25 +81,25 @@ const CertificationCard = ({ title, description, link, icon, platform, issueDate
         transition-all duration-300 hover:shadow-lg"
     >
       <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-indigo-600" />
-      <div className="p-6 pl-8">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <span className="text-3xl">{icon}</span>
-            <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+      <div className="p-5 pl-7"> {/* Reduced padding */}
+        <div className="flex items-center justify-between mb-3"> {/* Reduced margin */}
+          <div className="flex items-center gap-2"> {/* Reduced gap */}
+            <span className="text-2xl">{icon}</span> {/* Reduced icon size */}
+            <h3 className="text-base font-semibold text-gray-900">{title}</h3> {/* Reduced font size */}
           </div>
-          <span className="text-sm text-gray-500">{issueDate}</span>
+          <span className="text-xs text-gray-500">{issueDate}</span> {/* Reduced font size */}
         </div>
         
-        <p className="text-gray-600 text-sm mb-4">{description}</p>
+        <p className="text-gray-600 text-sm mb-3">{description}</p> {/* Reduced margin */}
         
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-          <span className="text-sm text-gray-500">{platform}</span>
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100"> {/* Reduced padding */}
+          <span className="text-xs text-gray-500">{platform}</span> {/* Reduced font size */}
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 
-              hover:text-blue-700 transition-colors group-hover:gap-3"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 
+              hover:text-blue-700 transition-colors group-hover:gap-2"
           >
             View Certificate
             <FaExternalLinkAlt className="w-3 h-3 transition-all duration-300" />
@@ -112,28 +112,28 @@ const CertificationCard = ({ title, description, link, icon, platform, issueDate
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="certifications" className="py-16 bg-gradient-to-b from-gray-50 to-white"> {/* Reduced padding */}
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl"> {/* Added max-width */}
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12"> {/* Reduced margin */}
           <div className="flex items-center justify-center mb-4">
             <span className="h-1 w-6 bg-blue-600 rounded-full mr-2" />
             <h2 className="text-sm font-semibold text-blue-600 uppercase tracking-wide">Certifications</h2>
             <span className="h-1 w-6 bg-blue-600 rounded-full ml-2" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"> {/* Reduced margin */}
             Professional{' '}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Certifications
             </span>
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-xl mx-auto text-sm"> {/* Reduced max-width and font size */}
             A collection of professional certifications that validate my expertise in various technologies
           </p>
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Changed to 2 columns */}
           {certifications.map((cert, index) => (
             <CertificationCard key={index} {...cert} index={index} />
           ))}

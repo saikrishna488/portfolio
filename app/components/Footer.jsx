@@ -107,7 +107,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="#resume" className="text-gray-300 hover:text-white transition-colors">
+                    <a href="/resume24.pdf" target='_blank' className="text-gray-300 hover:text-white transition-colors">
                       Resume
                     </a>
                   </li>
