@@ -67,11 +67,6 @@ const EducationCard = ({ entry, index }) => {
               <Calendar className="h-5 w-5 text-blue-600" />
               <div className="text-gray-600">{entry.duration}</div>
             </div>
-
-            <div className="flex items-center gap-3">
-              <Award className="h-5 w-5 text-blue-600" />
-              <div className="text-gray-900 font-medium">CGPA: {entry.cgpa}</div>
-            </div>
           </div>
 
           {/* Achievements */}
