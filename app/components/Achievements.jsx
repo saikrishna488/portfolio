@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 
 const achievements = [
   {
-    title: "RedBull Basement National Finalist",
-    description: "Selected as a National Finalist in RedBull Basement, a global innovation competition for university students. Presented innovative solution among top teams nationwide.",
+    title: "Reached RedBull Basement Nationals",
+    description: "Got Selected as one of the team for Nationals in RedBull Basement event, a global innovation competition for university students. Presented innovative solution among top teams nationwide.",
     icon: <FaTrophy />,
     category: "International Recognition",
     date: "2024"

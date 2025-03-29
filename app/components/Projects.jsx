@@ -37,7 +37,7 @@ const projects = [
     description: "Dynamic chat app using React, Node.js, and Socket.IO. Allows users to chat in real-time, with features like group chats and notifications.",
     liveDemo: "https://wchat-frontned-btkri2bn2q-uc.a.run.app/",
     category: "web",
-    github: "https://github.com/saikrishna488/chat-app"
+    github: "https://github.com/saikrishna488/wchat"
   },
   {
     title: "Learning Logs",

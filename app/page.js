@@ -9,6 +9,8 @@ import Leadership from './components/Leadership';
 import Education from './components/Education';
 import Footer from './components/Footer';
 import Contact from './components/Contact'
+import Experience from './components/Expierence';
+import Publications from './components/Publication';
 
 const Home = () => (
   
@@ -17,7 +19,9 @@ const Home = () => (
     <Header />
     <HeroSection />
     <Summary />
+    <Experience/>
     <Projects />
+    <Publications/>
     <Achievements />
     <Skills />
     <Leadership />
