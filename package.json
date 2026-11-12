@@ -1,0 +1,7 @@
+{
+  "name": "sai-portfolio",
+  "private": true,
+  "engines": {
+    "node": "26.x"
+  }
+}
