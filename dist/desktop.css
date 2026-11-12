@@ -27,6 +27,7 @@ body[data-view="desktop"] {
   background: #172c67 url('media/wallpaper.svg') center / cover no-repeat;
 }
 .bar {
+  position: relative; z-index: 1;
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
   padding: 0 12px; background: #15192ee8; font-size: .82rem;
 }
@@ -35,7 +36,7 @@ body[data-view="desktop"] {
 }
 .menu-right { display: flex; align-items: center; gap: 8px; }
 time { white-space: nowrap; }
-#desktop-view { position: relative; min-height: 0; --grid-width: 244px; }
+#desktop-view { position: relative; isolation: isolate; min-height: 0; --grid-width: 244px; }
 #desktop {
   position: absolute; z-index: 0; top: 10px; right: 10px; width: var(--grid-width);
   display: grid; grid-template-columns: repeat(auto-fit, minmax(68px, 1fr)); gap: 6px;
@@ -57,9 +58,9 @@ time { white-space: nowrap; }
 .icon-meridian { --icon-top: #6b7899; --icon-bottom: #273048; }
 .icon-bluetooth, .icon-contact { --icon-top: #4aabff; --icon-bottom: #2058d0; }
 .icon-wribate { --icon-top: #77cfa7; --icon-bottom: #187352; }
-footer { position: relative; z-index: 1; display: grid; justify-items: center; padding: 4px 6px; }
+footer { position: relative; z-index: 1; display: grid; justify-items: center; padding: 4px 6px; pointer-events: none; }
 #dock {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 2px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; pointer-events: auto;
   max-width: 100%; padding: 4px 5px 7px; border: 1px solid #ffffff45;
   border-radius: 15px; background: #25283dea; backdrop-filter: blur(16px);
 }

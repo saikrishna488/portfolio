@@ -31,8 +31,13 @@ function manageWindow(panel, bounds, handle, key) {
     }
     const x = geometry.x ?? (bounds.clientWidth - panel.offsetWidth) / 2;
     const y = geometry.y ?? (bounds.clientHeight - panel.offsetHeight) / 2;
-    panel.style.left = Math.max(0, Math.min(x, bounds.clientWidth - panel.offsetWidth)) + 'px';
-    panel.style.top = Math.max(0, Math.min(y, bounds.clientHeight - panel.offsetHeight)) + 'px';
+    // Keep a piece of the title bar reachable even when the body is off-screen.
+    const reachableWidth = Math.min(panel.offsetWidth, 132);
+    const reachableHeight = Math.min(handle.offsetHeight, 24);
+    const left = Math.max(reachableWidth - panel.offsetWidth, Math.min(x, bounds.clientWidth - reachableWidth));
+    const top = Math.max(reachableHeight - handle.offsetHeight, Math.min(y, bounds.clientHeight - reachableHeight));
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
   }
 
   function setMode(value) {
@@ -54,8 +59,8 @@ function manageWindow(panel, bounds, handle, key) {
       const dx = event.clientX - start.x;
       const dy = event.clientY - start.y;
       if (resize) {
-        geometry.width = Math.min(bounds.clientWidth - start.left, Math.max(300, start.width + dx));
-        geometry.height = Math.min(bounds.clientHeight - start.top, Math.max(160, start.height + dy));
+        geometry.width = Math.min(bounds.clientWidth, Math.max(300, start.width + dx));
+        geometry.height = Math.min(bounds.clientHeight, Math.max(160, start.height + dy));
       } else {
         geometry.x = start.left + dx;
         geometry.y = start.top + dy;
@@ -65,9 +70,9 @@ function manageWindow(panel, bounds, handle, key) {
     target.addEventListener('pointerup', event => {
       if (start?.id !== event.pointerId || resize) return;
       if (Math.abs(event.clientX - start.x) < 12) return;
-      const rect = bounds.getBoundingClientRect();
-      if (event.clientX <= rect.left + 22) setMode('left');
-      else if (event.clientX >= rect.right - 22) setMode('right');
+      const viewportWidth = document.documentElement.clientWidth;
+      if (event.clientX >= 0 && event.clientX <= 6) setMode('left');
+      else if (event.clientX >= viewportWidth - 6 && event.clientX < viewportWidth) setMode('right');
     });
     target.addEventListener('lostpointercapture', () => {
       if (!start) return;
