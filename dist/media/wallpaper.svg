@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x2=".8" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#102d70"/><stop offset=".54" stop-color="#2358be"/><stop offset="1" stop-color="#611c87"/>
+    </linearGradient>
+    <linearGradient id="pink" x1=".09" y1=".95" x2=".93" y2=".25">
+      <stop stop-color="#8433dd"/><stop offset=".55" stop-color="#dd4f9d"/><stop offset="1" stop-color="#ffb184"/>
+    </linearGradient>
+    <linearGradient id="blue" x1=".08" y1=".05" x2=".89" y2=".98">
+      <stop stop-color="#80e0fa"/><stop offset=".41" stop-color="#487ae7"/><stop offset=".8" stop-color="#292878"/><stop offset="1" stop-color="#382050"/>
+    </linearGradient>
+    <linearGradient id="low" x1=".14" y1=".1" x2=".85" y2=".95">
+      <stop stop-color="#6754c6"/><stop offset=".52" stop-color="#31265e"/><stop offset="1" stop-color="#1a1837"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1600v1000H0z"/>
+  <path fill="url(#pink)" d="M0 610C278 555 447 325 706 340c209 12 303 120 527 28 171-70 265-193 367-296v928H0z"/>
+  <path fill="url(#blue)" d="M0 452c227-58 428-71 597 13 155 78 252 228 459 233 244 5 380-183 544-311v613H0z"/>
+  <path fill="url(#low)" d="M0 680c192 50 340 91 539 38 160-43 291-147 445-121 198 33 268 177 616 133v270H0z"/>
+</svg>
