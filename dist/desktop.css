@@ -37,7 +37,7 @@ body[data-view="desktop"] {
 time { white-space: nowrap; }
 #desktop-view { position: relative; min-height: 0; --grid-width: 244px; }
 #desktop {
-  position: absolute; top: 10px; right: 10px; width: var(--grid-width);
+  position: absolute; z-index: 0; top: 10px; right: 10px; width: var(--grid-width);
   display: grid; grid-template-columns: repeat(auto-fit, minmax(68px, 1fr)); gap: 6px;
 }
 #desktop button, #dock button {
@@ -57,7 +57,7 @@ time { white-space: nowrap; }
 .icon-meridian { --icon-top: #6b7899; --icon-bottom: #273048; }
 .icon-bluetooth, .icon-contact { --icon-top: #4aabff; --icon-bottom: #2058d0; }
 .icon-wribate { --icon-top: #77cfa7; --icon-bottom: #187352; }
-footer { display: grid; justify-items: center; padding: 4px 6px; }
+footer { position: relative; z-index: 1; display: grid; justify-items: center; padding: 4px 6px; }
 #dock {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 2px;
   max-width: 100%; padding: 4px 5px 7px; border: 1px solid #ffffff45;
@@ -76,7 +76,7 @@ footer { display: grid; justify-items: center; padding: 4px 6px; }
   transform: translateX(-50%); width: max-content; padding: 4px 8px; border-radius: 5px;
   background: #171922; color: white; font-size: .75rem; pointer-events: none;
 }
-#workspace { position: absolute; inset: 10px calc(var(--grid-width) + 22px) 10px 12px; pointer-events: none; }
+#workspace { position: absolute; z-index: 1; inset: 10px 12px; pointer-events: none; }
 #workspace > section, .terminal-window {
   position: absolute; display: flex; flex-direction: column; min-height: 0;
   max-width: 100%; max-height: 100%; overflow: hidden; border: 1px solid #54565f;
