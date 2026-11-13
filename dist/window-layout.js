@@ -1,3 +1,8 @@
+const settingsVersion = 3;
+const previousSettingsVersion = (() => { try { return JSON.parse(localStorage.getItem('portfolio.settingsVersion')); } catch { return null; } })();
+// Legacy keys stay valid; migrations are additive and preserve visitor preferences.
+try { localStorage.setItem('portfolio.settingsVersion', JSON.stringify(settingsVersion)); } catch {}
+const windowControllers = new Map();
 function readPreference(key, fallback) {
   try { return JSON.parse(localStorage.getItem('portfolio.' + key)) ?? fallback; }
   catch { return fallback; }
@@ -66,16 +71,23 @@ function manageWindow(panel, bounds, handle, key) {
         geometry.y = start.top + dy;
       }
       layout();
+      if (!resize) {
+        const edge = event.clientX <= 12 ? 'left' : event.clientX >= innerWidth - 12 ? 'right' : '';
+        let preview = document.querySelector('#snap-preview');
+        if (!preview) { preview = document.createElement('div'); preview.id = 'snap-preview'; preview.setAttribute('aria-hidden', 'true'); document.body.append(preview); }
+        preview.hidden = !edge; preview.dataset.edge = edge;
+      }
     });
     target.addEventListener('pointerup', event => {
       if (start?.id !== event.pointerId || resize) return;
       if (Math.abs(event.clientX - start.x) < 12) return;
       const viewportWidth = document.documentElement.clientWidth;
-      if (event.clientX >= 0 && event.clientX <= 6) setMode('left');
-      else if (event.clientX >= viewportWidth - 6 && event.clientX < viewportWidth) setMode('right');
+      if (event.clientX >= 0 && event.clientX <= 12) setMode('left');
+      else if (event.clientX >= viewportWidth - 12 && event.clientX < viewportWidth) setMode('right');
     });
     target.addEventListener('lostpointercapture', () => {
       if (!start) return;
+      document.querySelector('#snap-preview')?.setAttribute('hidden', '');
       start = undefined;
       savePreference(key, { ...geometry, mode });
     });
@@ -84,7 +96,11 @@ function manageWindow(panel, bounds, handle, key) {
   track(grip, true);
   const observer = new ResizeObserver(layout);
   observer.observe(bounds);
-  return { layout, setMode, toggle: () => setMode(mode === 'full' ? '' : 'full') };
+  const controller = { layout, setMode, toggle: () => setMode(mode === 'full' ? '' : 'full'),
+    recover() { mode = ''; geometry = {}; savePreference(key, geometry); layout(); }
+  };
+  windowControllers.set(key, controller);
+  return controller;
 }
 
 function addLayoutMenu(controls, layout) {
