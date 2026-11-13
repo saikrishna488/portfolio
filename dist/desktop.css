@@ -65,7 +65,7 @@ footer { position: relative; z-index: 1; display: grid; justify-items: center; p
   border-radius: 15px; background: #25283dea; backdrop-filter: blur(16px);
 }
 #dock button { position: relative; padding: 2px; }
-#dock .icon { width: clamp(24px, calc((100vw - 105px)/9), 43px); }
+#dock .icon { width: clamp(20px, calc((100vw - 100px)/11), 43px); }
 #dock button.running::after {
   content: ''; position: absolute; left: calc(50% - 2px); bottom: -4px;
   width: 4px; height: 4px; border-radius: 50%; background: #d4d6e0;
@@ -174,3 +174,56 @@ footer { position: relative; z-index: 1; display: grid; justify-items: center; p
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }
+
+#desktop-tool {
+  width: min(580px, calc(100% - 28px)); max-height: min(680px, 85dvh); padding: 0;
+  color: inherit; background: #202127; border: 1px solid #787486; border-radius: 12px;
+  box-shadow: 0 20px 60px #0008;
+}
+#desktop-tool::backdrop { background: #1118; }
+#desktop-tool > header {
+  position: sticky; top: 0; z-index: 1; display: flex; align-items: center;
+  justify-content: space-between; padding: 12px 16px; background: #30313a;
+}
+#desktop-tool h2 { font-size: 1rem; margin: 0; }
+#desktop-tool-content { padding: 14px; }
+#desktop-tool button, #desktop-tool input {
+  color: inherit; background: #272936; border: 1px solid #777984;
+  border-radius: 6px; padding: 7px 10px;
+}
+#desktop-tool button:hover { background: #3b3d4e; }
+#desktop-tool input { width: 100%; margin-bottom: 10px; }
+.tool-list { display: grid; gap: 7px; }
+.tool-list button { text-align: left; }
+.tool-list small { display: block; color: var(--muted); }
+.window-overview { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.window-overview button { min-height: 82px; }
+@media (max-width: 440px) {
+  .bar > #active-app { display: none; }
+  .menu-right { gap: 3px; }
+  .bar { padding-inline: 7px; }
+}
+.recruiter-links { display: flex; gap: 7px 14px; flex-wrap: wrap; margin-block: 12px; }
+.project-contact { display: inline-block; margin: 8px; }
+#desktop-tool img { max-width: 100%; }
+#desktop-tool .content { padding: 12px 0 0; }
+@media (max-width: 360px) {
+  .bar > [data-app="about"] { font-size: .72rem; }
+  .menu-right > button { padding-inline: 3px; }
+  .menu-right time { display: none; }
+}
+.entries button > img { aspect-ratio: 16 / 7; object-fit: cover; margin-bottom: 9px; }
+/* Shared v3 controls */
+.settings-list { display:grid;gap:16px; }
+.settings-list label { display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap; }
+.settings-list :is(button,select), #projects select { background:#30313a;color:inherit;border:1px solid #777984;border-radius:6px;padding:8px; }
+#snap-preview {position:fixed;z-index:0;top:40px;bottom:70px;width:calc(50% - 18px);border:2px solid #ddd9ff;background:#b9afff33;border-radius:12px;pointer-events:none;}
+#snap-preview[data-edge="left"] {left:12px;} #snap-preview[data-edge="right"] {right:12px;}
+body[data-view="desktop"][data-wallpaper="midnight"] {background:#101723;}
+body[data-view="desktop"][data-wallpaper="dusk"] {background:linear-gradient(145deg,#1c1748,#714b70 60%,#d28d80);}
+body[data-motion="reduce"] *,body[data-motion="reduce"] *::before,body[data-motion="reduce"] *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+.switcher-image {width:100%;height:90px;object-fit:cover;border-radius:5px;margin-bottom:8px;}
+#desktop-tool .window-overview p {font-size:.8rem;}
+@media(max-width:650px),(max-height:420px){.controls button {min-width:28px;min-height:28px;} .titlebar {min-height:44px;} #command-line {flex-wrap:wrap;} #command-input {flex-basis:160px;} .copy-link {font-size:.65rem;} }
+#fullscreen-prompt {position:fixed;z-index:1000;left:50%;bottom:82px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:1px solid #777984;border-radius:10px;background:#202127;box-shadow:0 8px 32px #0007;font-size:.85rem;}
+#fullscreen-prompt button {white-space:nowrap;padding:7px 10px;border:1px solid #777984;border-radius:6px;background:#30313a;color:inherit;}
