@@ -122,7 +122,9 @@ function hideApp(app, state) {
     history.replaceState(null, '', active ? '#' + active.panel.id : '#desktop');
   }
   const launcher = app.opener;
-  if (launcher?.getClientRects().length && !launcher.closest('[inert], [hidden]')) {
+  if (mobile.matches && active) {
+    active.close.focus();
+  } else if (launcher?.getClientRects().length && !launcher.closest('[inert], [hidden]')) {
     launcher.focus();
   } else {
     (app.dockButton.hidden ? dockLauncher : app.dockButton).focus();
