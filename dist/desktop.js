@@ -3,6 +3,8 @@ const dock = document.querySelector('#dock');
 const dockLauncher = document.querySelector('#dock-launcher');
 const workspace = document.querySelector('#workspace');
 const mobile = compactWindows;
+const compactDock = matchMedia('(max-width: 650px), (pointer: coarse)');
+const dockShortcuts = ['projects', 'experience', 'contact', 'resume'];
 const apps = new Map();
 
 let active;
@@ -54,9 +56,11 @@ function fitDock() {
     - parseFloat(dockStyle.borderLeftWidth) - parseFloat(dockStyle.borderRightWidth);
   const capacity = Math.max(0, Math.floor((available - buttonWidth) / (buttonWidth + gap)));
   const focused = document.activeElement;
-  let index = 0;
-  for (const app of apps.values()) {
-    app.dockButton.hidden = index++ >= capacity;
+  const visibleApps = compactDock.matches
+    ? new Set([active?.panel.id, ...dockShortcuts].filter(Boolean).slice(0, Math.min(capacity, 4)))
+    : new Set([...apps.keys()].slice(0, capacity));
+  for (const [id, app] of apps) {
+    app.dockButton.hidden = !visibleApps.has(id);
     if (app.dockButton.hidden && app.dockButton === focused) dockLauncher.focus();
   }
 }
@@ -64,6 +68,7 @@ function fitDock() {
 const dockObserver = new ResizeObserver(fitDock);
 dockObserver.observe(dock.parentElement);
 dockObserver.observe(dockLauncher);
+compactDock.addEventListener('change', fitDock);
 
 function refresh() {
   for (const app of apps.values()) {
@@ -78,6 +83,7 @@ function refresh() {
   }
   document.querySelector('#active-app').textContent = active?.panel.getAttribute('aria-label') ?? 'Desktop';
   document.querySelector('#desktop-number').textContent = 'Space ' + desktopNumber;
+  fitDock();
   desk.inert = mobile.matches && Boolean(active);
   document.querySelector('#desktop-view').classList.toggle('has-window', Boolean(active));
 }
@@ -230,6 +236,7 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 function applyView(focus = false) {
+  if (location.hash === '#notes') history.replaceState(null, '', '#desktop');
   const id = location.hash.slice(1);
   const app = apps.get(id);
   const desktopMode = Boolean(app) || id === 'desktop';
