@@ -57,15 +57,19 @@ time { white-space: nowrap; }
 .icon-projects, .icon-resume { --icon-top: #fbfdff; --icon-bottom: #b5d0ed; }
 .icon-meridian { --icon-top: #6b7899; --icon-bottom: #273048; }
 .icon-bluetooth, .icon-contact { --icon-top: #4aabff; --icon-bottom: #2058d0; }
+.icon-launcher { --icon-top: #576480; --icon-bottom: #29344d; }
 .icon-wribate { --icon-top: #77cfa7; --icon-bottom: #187352; }
-footer { position: relative; z-index: 1; display: grid; justify-items: center; padding: 4px 6px; pointer-events: none; }
+footer { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; justify-items: center; padding: 4px 6px; pointer-events: none; }
 #dock {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; pointer-events: auto;
+  display: flex; flex-wrap: nowrap; justify-content: center; gap: 2px; pointer-events: auto;
   max-width: 100%; padding: 4px 5px 7px; border: 1px solid #ffffff45;
   border-radius: 15px; background: #25283dea; backdrop-filter: blur(16px);
 }
-#dock button { position: relative; padding: 2px; }
-#dock .icon { width: clamp(20px, calc((100vw - 100px)/11), 43px); }
+#dock button { position: relative; flex: 0 0 auto; display: grid; place-items: center; width: 49px; height: 49px; padding: 2px; }
+#dock .icon { width: 100%; }
+@media (max-width: 650px), (pointer: coarse) {
+  #dock button { width: 44px; height: 44px; }
+}
 #dock button.running::after {
   content: ''; position: absolute; left: calc(50% - 2px); bottom: -4px;
   width: 4px; height: 4px; border-radius: 50%; background: #d4d6e0;
@@ -164,7 +168,7 @@ footer { position: relative; z-index: 1; display: grid; justify-items: center; p
   .layout-menu, .resize-grip { display: none; }
   .titlebar, .terminal-titlebar { cursor: default; }
   #dock button:first-child::before { transform: none; left: 0; }
-  #dock button:last-child::before { transform: none; left: auto; right: 0; }
+  #dock-launcher::before { transform: none; left: auto; right: 0; }
 }
 @media (max-width: 370px) {
   .bar > span { display: none; }
