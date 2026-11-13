@@ -49,13 +49,6 @@ settingsBody.append(action('Recover windows',recoverWindows),action('Reset layou
   location.replace(location.pathname+'#desktop');location.reload();
 }));
 addApplication('settings','Settings','Appearance, session, and privacy preferences.',settingsBody);
-const notes=document.createElement('div');
-for(const [title,text,id] of [
-  ['Storage is a capability, not a device list','Meridian uses UDisks2 for storage controls. The interface must distinguish storage volumes from unrelated USB devices and report unsupported operations rather than silently failing.','meridian'],
-  ['Bluetooth input has several layers','Raw Bluetooth connects USB HCI, the Bumble Bluetooth stack, HID report decoding, and macOS input forwarding. A device pairing successfully does not by itself prove its input reports are supported.','bluetooth'],
-  ['Responsive interfaces and authenticated APIs','Wribate combined responsive Next.js views with JWT-authenticated REST APIs. The portfolio documents the internship contribution without claiming unmeasured adoption or performance results.','wribate']
-]){notes.append(textElement('h3',title),textElement('p',text),action('Explore '+appName(id),()=>switchView('#'+id)));}
-addApplication('notes','Engineering notes','Technical notes from Meridian, Raw Bluetooth, and Wribate.',notes);
 const filter=document.createElement('select');filter.setAttribute('aria-label','Filter projects');
 for(const name of ['All','Systems','Web','Tools','Experiments'])filter.add(new Option(name,name));
 const categories={meridian:['Systems','Tools'],bluetooth:['Systems','Tools','Experiments'],wribate:['Web']};
