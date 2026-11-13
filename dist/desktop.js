@@ -228,5 +228,5 @@ function switchView(hash, remember = true) {
 document.querySelector('#show-terminal').addEventListener('click', () => switchView(''));
 window.addEventListener('hashchange', () => applyView(true));
 window.addEventListener('popstate', () => applyView(true));
-if (!location.hash && readPreference('mode', 'terminal') === 'desktop') history.replaceState(null, '', '#desktop');
+// A plain site visit always opens Terminal; explicit app and desktop links keep their destination.
 applyView();
