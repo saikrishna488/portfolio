@@ -20,7 +20,7 @@ function showTool(title, ...content) {
   toolTitle.textContent = title;
   toolContent.replaceChildren(...content);
   if (!tool.open) tool.showModal();
-  (toolContent.querySelector('input,button,a') ?? tool.querySelector('button')).focus();
+  (toolContent.querySelector('[autofocus]') ?? toolContent.querySelector('input,button,a') ?? tool.querySelector('button')).focus();
 }
 
 document.querySelector('#desktop-tool-close').addEventListener('click', () => tool.close());
@@ -39,7 +39,7 @@ function appName(id) {
   return apps.get(id).panel.getAttribute('aria-label');
 }
 
-function showSearch(appsOnly = false) {
+function showSearch(appsOnly = false, opener) {
   const field = document.createElement('input');
   field.type = 'search';
   field.placeholder = appsOnly ? 'Find an app' : 'Search apps, projects, skills, and commands';
@@ -48,7 +48,10 @@ function showSearch(appsOnly = false) {
   results.className = 'tool-list';
   const entries = [...apps.keys()].map(id => {
     const content = apps.get(id).panel.querySelector('.content');
-    return { label: appName(id), detail: summaries[id] ?? '', keywords: content.textContent, run: () => launch(id) };
+    return { label: appName(id), detail: summaries[id] ?? '', keywords: content.textContent, run: () => {
+      if (opener) apps.get(id).opener = opener;
+      launch(id);
+    } };
   });
   if (!appsOnly) {
     for (const [command, detail] of Object.entries(help)) {
@@ -75,7 +78,9 @@ function showSearch(appsOnly = false) {
     else first?.focus();
   });
   filter();
+  if (opener && matchMedia('(pointer: coarse)').matches) results.firstElementChild?.setAttribute('autofocus', '');
   showTool(appsOnly ? 'Applications' : 'Search', field, results);
+  if (opener) returnFocus = opener;
 }
 
 function quickLook(id = active?.panel.id ?? 'resume') {
@@ -152,6 +157,7 @@ function desktopMenu(id) {
 }
 
 sortIcons(sortOrder);
+dockLauncher.addEventListener('click', () => showSearch(true, dockLauncher));
 document.querySelector('#desktop-search').addEventListener('click', () => showSearch());
 document.querySelector('#desktop-number').addEventListener('click', () => showDesktop(desktopNumber === 1 ? 2 : 1));
 document.querySelector('#desktop-menu-button').addEventListener('click', () => desktopMenu());
