@@ -68,6 +68,7 @@ footer { position: relative; z-index: 1; display: grid; grid-template-columns: m
 #dock button { position: relative; flex: 0 0 auto; display: grid; place-items: center; width: 49px; height: 49px; padding: 2px; }
 #dock .icon { width: 100%; }
 @media (max-width: 650px), (pointer: coarse) {
+  #dock { gap: 6px; }
   #dock button { width: 44px; height: 44px; }
 }
 #dock button.running::after {
