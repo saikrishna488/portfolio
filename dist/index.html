@@ -5,13 +5,13 @@
 <meta name="description" content="Sai Krishna Reddy Pakkir builds web applications, desktop software, and hardware integrations.">
 <title>Sai Krishna Reddy Pakkir · Portfolio</title>
 <link rel="icon" href="media/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://sai-portfolio-public.engagingpenguin8.chatgpt.site/">
-<meta property="og:url" content="https://sai-portfolio-public.engagingpenguin8.chatgpt.site/">
-<meta property="og:image" content="https://sai-portfolio-public.engagingpenguin8.chatgpt.site/media/social.jpg">
+<link rel="canonical" href="https://www.pakkir.com/">
+<meta property="og:url" content="https://www.pakkir.com/">
+<meta property="og:image" content="https://www.pakkir.com/media/social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="Sai Krishna Reddy Pakkir · Portfolio">
 <meta property="og:description" content="Software engineering projects, experience, and résumé.">
-<link rel="stylesheet" href="desktop.css"><script src="window-layout.js" defer></script><script src="desktop.js" defer></script><script src="terminal.js" defer></script>
+<link rel="stylesheet" href="desktop.css"><script src="window-layout.js" defer></script><script src="registry.js" defer></script><script src="desktop.js" defer></script><script src="shell-parser.js" defer></script><script src="terminal.js" defer></script><script src="desktop-tools.js" defer></script><script src="enhancements.js" defer></script>
 </head>
 <body data-view="terminal">
 <main id="terminal-view" aria-label="Terminal portfolio">
@@ -25,6 +25,7 @@
       <header class="terminal-intro">
         <h1>Sai Krishna Reddy Pakkir</h1>
         <p>I’m a computer science graduate student at the University of Central Missouri. I build web applications and systems software, and I enjoy working across the stack, from interfaces to hardware.</p>
+        <nav class="recruiter-links" aria-label="Portfolio links"><a href="media/resume.pdf" download>Download résumé</a><a href="profile.html">Quick view</a><a href="mailto:saikrishna@pakkir.com">Email</a><a href="https://github.com/saikrishna488">GitHub</a><a href="https://www.linkedin.com/in/saikrishna488">LinkedIn</a></nav>
         <p class="terminal-path">sai@portfolio:~$ /help</p>
         <nav id="startup-commands" aria-label="Available commands"></nav>
       </header>
@@ -33,39 +34,41 @@
     </div>
   </div>
 </main>
-<header class="bar"><button data-app="about">Sai Krishna</button><span title="Ctrl+Alt+Left or Right switches windows">Portfolio Desktop</span><div class="menu-right"><button id="show-terminal">Terminal</button><time></time></div></header>
+<header class="bar"><button data-app="about">Sai Krishna</button><span id="active-app">Desktop</span><div class="menu-right"><button id="desktop-search" aria-label="Search apps, projects, skills, and commands">Search</button><button id="desktop-number" aria-label="Switch desktop space">Space 1</button><button id="desktop-menu-button" aria-label="Desktop menu">⋯</button><button id="show-terminal">Terminal</button><time></time></div></header>
 <main id="desktop-view" aria-label="Portfolio desktop">
 <nav id="desktop" aria-label="Desktop apps"></nav>
 <div id="workspace">
 <section id="about" aria-label="About"><div class="content"><div class="avatar" aria-hidden="true">SK</div><p class="tag">Software development</p><h1>Sai Krishna<br>Reddy Pakkir</h1><p>I’m a computer science graduate student at the University of Central Missouri. I build web applications and systems software, and I enjoy working across the stack, from interfaces to hardware.</p><button class="primary" data-app="projects">Open Projects ↗</button></div></section>
-<section id="projects" aria-label="Projects" hidden><div class="content"><h2>Projects</h2><div class="entries"><button data-app="meridian"><strong>Meridian</strong><small>Linux desktop shell · Rust and TypeScript</small></button><button data-app="bluetooth"><strong>Raw Bluetooth</strong><small>Experimental userspace driver for macOS</small></button><button data-app="wribate"><strong>Wribate</strong><small>Full-stack web application · Next.js and MongoDB</small></button></div></div></section>
-<section id="meridian" aria-label="Meridian" hidden><div class="content"><p class="tag">Linux · Rust · TypeScript</p><h2>Meridian</h2><p>A Linux desktop shell with a configurable dock, an app launcher, notifications, and settings for displays, storage, and other hardware.</p><h3>Engineering choices and results</h3><p>I built Meridian to bring desktop controls into one shell. Rust handles system integration, with a TypeScript interface for the dock, launcher, and settings. I used UDisks2 for storage controls and added display hot-plug handling with rollback. Compatibility depends on the available hardware and Wayland compositor protocols.</p><figure><a href="media/desktop.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" data-src="media/desktop.webp" width="1280" height="720" alt="Meridian desktop with a dock along the bottom"></a><figcaption>Meridian desktop screenshot</figcaption></figure>
+<section id="projects" aria-label="Projects" hidden><div class="content"><h2>Projects</h2><div class="entries"><button data-app="meridian"><img loading="lazy" decoding="async" data-src="media/desktop.webp" width="1280" height="720" alt=""><strong>Meridian</strong><small>Linux desktop shell · Rust and TypeScript</small></button><button data-app="bluetooth"><img loading="lazy" decoding="async" data-src="media/raw-bluetooth.webp" width="1080" height="720" alt=""><strong>Raw Bluetooth</strong><small>Experimental userspace driver for macOS</small></button><button data-app="wribate"><strong>Wribate</strong><small>Full-stack web application · Next.js and MongoDB</small></button></div></div></section>
+<section id="meridian" aria-label="Meridian" hidden><div class="content"><p class="tag">Linux · Rust · TypeScript</p><h2>Meridian</h2><p>A Linux desktop shell with a configurable dock, an app launcher, notifications, and settings for displays, storage, and other hardware.</p><h3>Problem and contribution</h3><p>Desktop controls are spread across multiple tools. I built a shell that brings everyday controls into a consistent interface.</p><h3>Architecture, tradeoffs, and results</h3><p>I built Meridian to bring desktop controls into one shell. Rust handles system integration, with a TypeScript interface for the dock, launcher, and settings. I used UDisks2 for storage controls and added display hot-plug handling with rollback. Compatibility depends on the available hardware and Wayland compositor protocols.</p><figure><a href="media/desktop.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" data-src="media/desktop.webp" width="1280" height="720" alt="Meridian desktop with a dock along the bottom"></a><figcaption>Meridian desktop screenshot</figcaption></figure>
 <h3>Desktop walkthrough</h3>
 <video controls playsinline preload="none" poster="media/desktop.webp" aria-label="Nine-second screenshot walkthrough of the desktop, launcher, and settings"><source src="media/meridian-walkthrough.mp4" type="video/mp4"></video>
 <p class="caption">A silent, nine-second walkthrough made from project screenshots. <a href="media/launcher.png" target="_blank" rel="noopener">Launcher</a> · <a href="media/settings.png" target="_blank" rel="noopener">Settings</a></p>
-<a class="primary" href="https://github.com/saikrishna488/meridian">Meridian on GitHub ↗</a></div></section>
+<a class="primary" href="https://github.com/saikrishna488/meridian">Meridian on GitHub ↗</a> <a class="project-contact" href="mailto:saikrishna@pakkir.com">Ask about this project</a></div></section>
 <section id="bluetooth" aria-label="Raw Bluetooth" hidden><div class="content"><p class="tag">macOS · USB HCI · SwiftUI</p><h2>Raw Bluetooth</h2><p>An experimental userspace driver that uses an external USB Bluetooth adapter and Google Bumble to connect keyboards and mice to macOS. A SwiftUI app handles scanning, pairing, and saved devices.</p><h3>Why I built it</h3><p>I wanted to use Bluetooth keyboards and mice with an external USB adapter through a dedicated macOS app.</p>
 <h3>How input reaches macOS</h3><ol><li>The app talks to the external adapter over USB HCI.</li><li>Google Bumble discovers and pairs Bluetooth Low Energy devices.</li><li>The driver decodes HID reports and forwards keyboard and mouse events to macOS.</li></ol>
-<h3>Test setup</h3><p>I tested a CSR USB adapter (0a12:0001), a Logitech M196 mouse, and a Logitech K250 keyboard on Intel macOS. Keyboard and mouse input worked on that setup. Audio remains experimental, and compatibility depends on the adapter and peripherals.</p>
-<figure><img loading="lazy" decoding="async" data-src="media/raw-bluetooth.webp" width="1080" height="720" alt="Raw Bluetooth application window on macOS"><figcaption>Raw Bluetooth app screenshot</figcaption></figure><a class="primary" href="https://github.com/saikrishna488/raw-bluetooth">Raw Bluetooth on GitHub ↗</a></div></section>
+<h3>Technical decisions and limitations</h3><p>A userspace approach allows experimentation with the Bluetooth stack and a dedicated interface. It also requires explicit device support and input forwarding; this is not a replacement for every macOS Bluetooth capability.</p><h3>Test setup</h3><p>I tested a CSR USB adapter (0a12:0001), a Logitech M196 mouse, and a Logitech K250 keyboard on Intel macOS. Keyboard and mouse input worked on that setup. Audio remains experimental, and compatibility depends on the adapter and peripherals.</p>
+<figure><img loading="lazy" decoding="async" data-src="media/raw-bluetooth.webp" width="1080" height="720" alt="Raw Bluetooth application window on macOS"><figcaption>Raw Bluetooth app screenshot</figcaption></figure><a class="primary" href="https://github.com/saikrishna488/raw-bluetooth">Raw Bluetooth on GitHub ↗</a> <a class="project-contact" href="mailto:saikrishna@pakkir.com">Ask about this project</a></div></section>
 <section id="education" aria-label="Education" hidden><div class="content"><p class="tag">Graduate studies</p><h2>University of Central Missouri</h2><p>Master of Science in Computer Science · August 2025 to expected May 2027</p><h3>Selected coursework</h3><ul><li>CYBR 5310 · Design of Cryptographic Algorithms and Protocols</li><li>CYBR 5800 · Advanced Computer Networking and Security</li><li>DSA 5100 · Programming Foundations for Data Science and AI</li><li>DSA 5200 · Advanced Data Visualization</li></ul><p><a href="https://www.ucmo.edu/current-students/office-of-the-registrar-and-student-records/catalogs/">UCM academic catalogs</a></p></div></section>
 <section id="experience" aria-label="Experience" hidden><div class="content">
 <h2>Experience</h2>
+<h3>Innorize Enterprises</h3><p>Software Engineer Intern · Hyderabad · April–July 2025</p>
+<p>Built a responsive Next.js interface and worked on JWT-authenticated REST APIs for Wribate.</p>
+<button class="primary" data-app="wribate">Explore Wribate</button>
 <h3>University of Central Missouri</h3><p>Front Desk Assistant · Lee’s Summit · August 2026–present</p>
 <h3>Sodexo</h3><p>Student Worker · Warrensburg · April 2026</p>
-<h3>Innorize Enterprises</h3><p>Software Engineer Intern · Hyderabad · April–July 2025</p>
-<button class="primary" data-app="wribate">Explore Wribate</button>
 </div></section>
 <section id="wribate" aria-label="Wribate" hidden><div class="content">
 <p class="tag">Next.js · Node.js · MongoDB</p><h2>Wribate</h2>
 <h3>Problem and contribution</h3><p>During my internship at Innorize, I helped build a responsive web application for online debate and discussion. I worked on the frontend and REST APIs.</p>
-<h3>Engineering choices and results</h3><p>I used Tailwind for the interface, MongoDB for persistence, and JWT authentication for the APIs. Caching and lazy loading improved load speed by about 30% in the project measurements. The résumé figure describes the changes measured during the internship and can vary by page and network.</p>
-<a class="primary" href="https://wribate.com/">Visit Wribate</a>
+<h3>Architecture, tradeoffs, and results</h3><p>I used Tailwind for the interface, MongoDB for persistence, and JWT authentication for the APIs. Caching and lazy loading improved load speed by about 30% in the project measurements. The résumé figure describes the changes measured during the internship and can vary by page and network.</p>
+<a class="primary" href="https://wribate.com/">Visit Wribate</a> <a class="project-contact" href="mailto:saikrishna@pakkir.com">Ask about this project</a>
 </div></section>
 <section id="contact" aria-label="Contact" hidden><div class="content"><h2>Get in touch</h2><ul><li><a href="mailto:saikrishna@pakkir.com">saikrishna@pakkir.com ↗</a></li><li><a href="https://www.linkedin.com/in/saikrishna488">LinkedIn ↗</a></li><li><a href="https://github.com/saikrishna488">GitHub ↗</a></li></ul></div></section>
 <section id="resume" aria-label="Résumé" hidden><div class="content"><h2>Résumé</h2><p class="resume-actions"><a class="primary" href="media/resume.pdf" download="Sai-Krishna-Reddy-Pakkir-Resume.pdf">Download PDF</a> <a href="media/resume.pdf" target="_blank" rel="noopener">Open PDF ↗</a></p><a href="media/resume.pdf" target="_blank" rel="noopener"><img class="resume-preview" data-src="media/resume-page-1.webp" loading="lazy" decoding="async" width="1082" height="1400" alt="Preview of Sai Krishna Reddy Pakkir’s one-page résumé"></a></div></section>
 </div>
 </main>
 <footer><nav id="dock" aria-label="Dock"></nav></footer>
+<dialog id="desktop-tool" aria-labelledby="desktop-tool-title"><header><h2 id="desktop-tool-title"></h2><button id="desktop-tool-close" aria-label="Close dialog">×</button></header><div id="desktop-tool-content"></div></dialog><div id="desktop-status" class="sr-only" role="status"></div>
 <noscript><p>Enable JavaScript to open portfolio apps.</p></noscript>
 </body></html>
