@@ -17,6 +17,7 @@ function action(label, run, description) {
 
 function showTool(title, ...content) {
   if (!tool.open) returnFocus = document.activeElement;
+  tool.classList.toggle('app-launcher', content.some(element => element.classList.contains('app-launcher-grid')));
   toolTitle.textContent = title;
   toolContent.replaceChildren(...content);
   if (!tool.open) tool.showModal();
@@ -45,10 +46,10 @@ function showSearch(appsOnly = false, opener) {
   field.placeholder = appsOnly ? 'Find an app' : 'Search apps, projects, skills, and commands';
   field.setAttribute('aria-label', field.placeholder);
   const results = document.createElement('div');
-  results.className = 'tool-list';
+  results.className = appsOnly ? 'app-launcher-grid' : 'tool-list';
   const entries = [...apps.keys()].map(id => {
     const content = apps.get(id).panel.querySelector('.content');
-    return { label: appName(id), detail: summaries[id] ?? '', keywords: content.textContent, run: () => {
+    return { id, label: appName(id), detail: summaries[id] ?? '', keywords: content.textContent, run: () => {
       if (opener) apps.get(id).opener = opener;
       launch(id);
     } };
@@ -66,7 +67,15 @@ function showSearch(appsOnly = false, opener) {
     const terms = field.value.toLowerCase().trim().split(/\s+/);
     const matches = entries.filter(entry => terms.every(term =>
       [entry.label, entry.detail, entry.keywords].join(' ').toLowerCase().includes(term)));
-    results.replaceChildren(...matches.map(entry => action(entry.label, entry.run, entry.detail)));
+    const buttons = matches.map(entry => {
+      if (!appsOnly) return action(entry.label, entry.run, entry.detail);
+      const button = launcher(entry.id, entry.label, true);
+      delete button.dataset.app;
+      button.type = 'button';
+      button.addEventListener('click', entry.run);
+      return button;
+    });
+    results.replaceChildren(...buttons);
     if (!matches.length) results.append(textElement('p', 'No matches'));
   }
   field.addEventListener('input', filter);
@@ -78,8 +87,10 @@ function showSearch(appsOnly = false, opener) {
     else first?.focus();
   });
   filter();
-  if (opener && matchMedia('(pointer: coarse)').matches) results.firstElementChild?.setAttribute('autofocus', '');
-  showTool(appsOnly ? 'Applications' : 'Search', field, results);
+  if (appsOnly && (compactDock.matches || mobile.matches)) {
+    results.querySelector('button')?.setAttribute('autofocus', '');
+  }
+  showTool(appsOnly ? 'App Launcher' : 'Search', field, results);
   if (opener) returnFocus = opener;
 }
 
