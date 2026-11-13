@@ -1,5 +1,6 @@
 const desk = document.querySelector('#desktop');
 const dock = document.querySelector('#dock');
+const dockLauncher = document.querySelector('#dock-launcher');
 const workspace = document.querySelector('#workspace');
 const mobile = compactWindows;
 const apps = new Map();
@@ -39,6 +40,30 @@ function launcher(target, title, showLabel) {
   else button.dataset.tooltip = title;
   return button;
 }
+
+function fitDock() {
+  const buttonWidth = dockLauncher.getBoundingClientRect().width;
+  if (!buttonWidth) return;
+
+  const dockStyle = getComputedStyle(dock);
+  const footerStyle = getComputedStyle(dock.parentElement);
+  const gap = parseFloat(dockStyle.columnGap);
+  const available = dock.parentElement.clientWidth
+    - parseFloat(footerStyle.paddingLeft) - parseFloat(footerStyle.paddingRight)
+    - parseFloat(dockStyle.paddingLeft) - parseFloat(dockStyle.paddingRight)
+    - parseFloat(dockStyle.borderLeftWidth) - parseFloat(dockStyle.borderRightWidth);
+  const capacity = Math.max(0, Math.floor((available - buttonWidth) / (buttonWidth + gap)));
+  const focused = document.activeElement;
+  let index = 0;
+  for (const app of apps.values()) {
+    app.dockButton.hidden = index++ >= capacity;
+    if (app.dockButton.hidden && app.dockButton === focused) dockLauncher.focus();
+  }
+}
+
+const dockObserver = new ResizeObserver(fitDock);
+dockObserver.observe(dock.parentElement);
+dockObserver.observe(dockLauncher);
 
 function refresh() {
   for (const app of apps.values()) {
@@ -91,7 +116,11 @@ function hideApp(app, state) {
     history.replaceState(null, '', active ? '#' + active.panel.id : '#desktop');
   }
   const launcher = app.opener;
-  (launcher?.getClientRects().length && !launcher.closest('[inert], [hidden]') ? launcher : app.dockButton).focus();
+  if (launcher?.getClientRects().length && !launcher.closest('[inert], [hidden]')) {
+    launcher.focus();
+  } else {
+    (app.dockButton.hidden ? dockLauncher : app.dockButton).focus();
+  }
 }
 
 function registerApp(panel) {
@@ -99,7 +128,7 @@ function registerApp(panel) {
   const desktopButton = launcher(panel.id, title, true);
   const dockButton = launcher(panel.id, title, false);
   desk.append(desktopButton);
-  dock.append(dockButton);
+  dockLauncher.before(dockButton);
 
   const titlebar = document.createElement('header');
   const controls = document.createElement('div');
@@ -206,6 +235,7 @@ function applyView(focus = false) {
   const desktopMode = Boolean(app) || id === 'desktop';
   document.body.dataset.view = desktopMode ? 'desktop' : 'terminal';
   if (desktopMode) {
+    fitDock();
     document.querySelectorAll('#terminal-view video').forEach(video => video.pause());
     if (app) openApp(app, focus);
     else if (active) active.layout.layout();
