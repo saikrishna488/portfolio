@@ -1,5 +1,6 @@
 // Shared app and terminal metadata. Launchers, search, help and completion consume these registries.
 const appDetails = {
+  nebula: 'Native code editor',
   about: 'Meet the developer', projects: 'Explore selected work',
   meridian: 'Linux desktop shell', bluetooth: 'macOS hardware integration',
   education: 'Computer science', experience: 'Work and contributions',
@@ -7,6 +8,7 @@ const appDetails = {
   resume: 'Preview and download', settings: 'Make it yours'
 };
 const icons = {
+  nebula: '<path d="M4 7h16v12H4z" fill="#0b1029"/><path d="m9 10-3 3 3 3m6-6 3 3-3 3m-2-8-2 10" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m18 2 .7 1.7L21 4l-2.3.7L18 7l-.7-2.3L15 4l2.3-.3z" fill="#fff"/>',
   settings: '<path d="m10 2 4 0 .8 3 2.2 1.3 3-.8 2 3.5-2.2 2.2v2.6l2.2 2.2-2 3.5-3-.8-2.2 1.3-.8 3h-4l-.8-3L7 18.7l-3 .8-2-3.5 2.2-2.2v-2.6L2 9l2-3.5 3 .8L9.2 5z" fill="#fff"/><circle cx="12" cy="12" r="3.2" fill="#252b37"/>',
   about: '<rect x="4" y="3" width="16" height="18" rx="3" fill="#eaf7ff"/><circle cx="12" cy="9" r="3" fill="#3889cf"/><path d="M6.5 17a5.5 5.5 0 0 1 11 0z" fill="#3889cf"/>',
   projects: '<path d="M2 6a2 2 0 0 1 2-2h6l2 2h8a2 2 0 0 1 2 2v10H2z" fill="#69cafa"/><rect x="2" y="8" width="20" height="12" rx="2" fill="#26a6e8"/><path d="M4 9h16" stroke="#bbecff"/>',
@@ -22,7 +24,8 @@ const themes = ['green', 'amber', 'ice'];
 const summaries = {
   about: 'Computer science graduate student building web applications and systems software.',
   experience: 'University of Central Missouri · Sodexo · Innorize Enterprises.',
-  projects: 'Meridian, Raw Bluetooth, and Wribate.',
+  projects: 'Nebula Code, Meridian, Raw Bluetooth, and Wribate.',
+  nebula: 'An offline-first C++20 and Qt code editor for macOS and Linux.',
   meridian: 'A Linux desktop shell with a configurable dock, launcher, and hardware settings.',
   bluetooth: 'An experimental macOS userspace driver for Bluetooth keyboards and mice.',
   wribate: 'A full-stack application for online debate and discussion.',
