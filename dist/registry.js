@@ -1,5 +1,13 @@
 // Shared app and terminal metadata. Launchers, search, help and completion consume these registries.
+const appDetails = {
+  about: 'Meet the developer', projects: 'Explore selected work',
+  meridian: 'Linux desktop shell', bluetooth: 'macOS hardware integration',
+  education: 'Computer science', experience: 'Work and contributions',
+  wribate: 'Full-stack application', contact: 'Start a conversation',
+  resume: 'Preview and download', settings: 'Make it yours'
+};
 const icons = {
+  settings: '<path d="m10 2 4 0 .8 3 2.2 1.3 3-.8 2 3.5-2.2 2.2v2.6l2.2 2.2-2 3.5-3-.8-2.2 1.3-.8 3h-4l-.8-3L7 18.7l-3 .8-2-3.5 2.2-2.2v-2.6L2 9l2-3.5 3 .8L9.2 5z" fill="#fff"/><circle cx="12" cy="12" r="3.2" fill="#252b37"/>',
   about: '<rect x="4" y="3" width="16" height="18" rx="3" fill="#eaf7ff"/><circle cx="12" cy="9" r="3" fill="#3889cf"/><path d="M6.5 17a5.5 5.5 0 0 1 11 0z" fill="#3889cf"/>',
   projects: '<path d="M2 6a2 2 0 0 1 2-2h6l2 2h8a2 2 0 0 1 2 2v10H2z" fill="#69cafa"/><rect x="2" y="8" width="20" height="12" rx="2" fill="#26a6e8"/><path d="M4 9h16" stroke="#bbecff"/>',
   meridian: '<rect x="2" y="4" width="20" height="14" rx="2.5" fill="#edf6ff"/><rect x="3.6" y="5.5" width="16.8" height="10.5" rx="1.2" fill="#273755"/><path d="m7 8 2 2-2 2m4 0h4" fill="none" stroke="#a1f4dd" stroke-linecap="round"/><path d="M9 21h6m-3-3v3" stroke="#edf6ff" stroke-width="1.6" stroke-linecap="round"/>',
