@@ -13,11 +13,11 @@ def page(title,body,path,description):
 body='<h1>Sai Krishna Reddy Pakkir</h1>'
 for id in ['about','experience','education','projects','contact']:
     content=clean(sections[id]);content=re.sub('<h1>.*?</h1>','',content,flags=re.S);body+=content
-body+='<h2>Skills demonstrated in projects</h2><p>Rust and TypeScript — Meridian; USB HCI and SwiftUI — Raw Bluetooth; Next.js, Node.js, MongoDB and authenticated REST APIs — Wribate.</p>'
+body+='<h2>Skills demonstrated in projects</h2><p>C++20, Qt Widgets, Scintilla and clangd — Nebula Code; Rust and TypeScript — Meridian; USB HCI and SwiftUI — Raw Bluetooth; Next.js, Node.js, MongoDB and authenticated REST APIs — Wribate.</p>'
 (dist/'profile.html').write_text(page('Recruiter view',body,'profile.html','Experience, education, projects, and skills by Sai Krishna Reddy Pakkir.'))
-for id,title in [('meridian','Meridian'),('bluetooth','Raw Bluetooth'),('wribate','Wribate')]:
+for id,title in [('nebula','Nebula Code'),('meridian','Meridian'),('bluetooth','Raw Bluetooth'),('wribate','Wribate')]:
     body=clean(sections[id]);body=f'<p><a href="./#{id}">Open {title} in a desktop window</a></p>'+body
     description=re.sub('<[^>]+>',' ',sections[id]).strip()[:180]
     (dist/f'{id}.html').write_text(page(title,body,f'{id}.html',description))
-urls=['','profile.html','meridian.html','bluetooth.html','wribate.html']
+urls=['','profile.html','nebula.html','meridian.html','bluetooth.html','wribate.html']
 (dist/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>https://www.pakkir.com/{url}</loc></url>' for url in urls)+'</urlset>')
