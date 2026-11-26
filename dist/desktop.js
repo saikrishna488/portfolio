@@ -38,7 +38,18 @@ function launcher(target, title, showLabel) {
   button.dataset.app = target;
   button.setAttribute('aria-controls', target);
   button.append(icon);
-  if (showLabel) button.append(title);
+  if (showLabel) {
+    const label = document.createElement('span');
+    label.className = 'app-label';
+    label.textContent = title;
+    button.append(label);
+    if (appDetails[target]) {
+      const detail = document.createElement('small');
+      detail.className = 'app-detail';
+      detail.textContent = appDetails[target];
+      button.append(detail);
+    }
+  }
   else button.dataset.tooltip = title;
   return button;
 }
@@ -75,6 +86,12 @@ function refresh() {
     const hidden = app.state !== 'open' || app.desktop !== desktopNumber;
     if (hidden && !app.panel.hidden) app.panel.querySelectorAll('video').forEach(video => video.pause());
     app.panel.hidden = hidden;
+    if (!hidden) {
+      app.panel.querySelectorAll('img[data-src]').forEach(image => {
+        image.src = image.dataset.src;
+        delete image.dataset.src;
+      });
+    }
     app.panel.classList.toggle('active', app === active);
     app.panel.inert = mobile.matches && app !== active;
     app.dockButton.classList.toggle('active', app === active);
