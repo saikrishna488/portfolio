@@ -51,7 +51,7 @@ settingsBody.append(action('Recover windows',recoverWindows),action('Reset layou
 addApplication('settings','Settings','Appearance, session, and privacy preferences.',settingsBody);
 const filter=document.createElement('select');filter.setAttribute('aria-label','Filter projects');
 for(const name of ['All','Systems','Web','Tools','Experiments'])filter.add(new Option(name,name));
-const categories={meridian:['Systems','Tools'],bluetooth:['Systems','Tools','Experiments'],wribate:['Web']};
+const categories={nebula:['Systems','Tools'],meridian:['Systems','Tools'],bluetooth:['Systems','Tools','Experiments'],wribate:['Web']};
 filter.addEventListener('change',()=>{for(const button of document.querySelectorAll('#projects .entries > button'))button.hidden=filter.value!=='All'&&!categories[button.dataset.app]?.includes(filter.value);});
 document.querySelector('#projects .entries').before(filter);
 function persistSession() {
