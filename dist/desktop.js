@@ -178,7 +178,7 @@ function registerApp(panel) {
   const copy = control('Copy window link', 'Copy link', async () => {
     const url = new URL(location.href);
     url.hash = panel.id;
-    if (['meridian','bluetooth','wribate'].includes(panel.id)) { url.pathname = url.pathname.replace(/[^/]*$/, panel.id + '.html'); url.hash = ''; }
+    if (['nebula','meridian','bluetooth','wribate'].includes(panel.id)) { url.pathname = url.pathname.replace(/[^/]*$/, panel.id + '.html'); url.hash = ''; }
     try {
       await navigator.clipboard.writeText(url.href);
       copy.textContent = 'Copied';
