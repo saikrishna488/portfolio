@@ -25,6 +25,7 @@ const fileSystem = new Map([
   ['/education.txt', 'education'],
   ['/contact.txt', 'contact'],
   ['/resume.txt', 'resume'],
+  ['/projects/nebula-code.txt', 'nebula'],
   ['/projects/meridian.txt', 'meridian'],
   ['/projects/raw-bluetooth.txt', 'bluetooth'],
   ['/projects/wribate.txt', 'wribate']
