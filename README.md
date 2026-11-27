@@ -1,7 +1,9 @@
-# Sai Krishna Reddy Pakkir · Portfolio
+# Sai Krishna Pakkir · Portfolio
 
-A terminal-first portfolio with a desktop mode. Type `/help` to list commands or `/desktop` to switch views.
+A static sidebar portfolio hosted on ChatGPT Sites at https://www.pakkir.com.
 
-Serve the static site locally with `python3 -m http.server 8000 --directory dist` and visit http://localhost:8000.
+Edit project descriptions in content/portfolio.json and overview/project summaries in scripts/build-content.py. Run python scripts/build-content.py to generate the pages, then python scripts/check-assets.py and node --check dist/portfolio.js.
 
-The Pages workflow publishes `dist/` on pushes to `main`.
+The interface uses dist/portfolio.css and dist/portfolio.js. Navigation is ordinary HTML links. JavaScript adds the mobile menu, project filtering, and redirects for previously shared desktop hash links.
+
+Hosting uses the existing .openai/hosting.json. GitHub Pages deployment is disabled.
